@@ -94,7 +94,25 @@
 
   \part $A \times (B \interx C) = (A \times B) \interx (A \times C) $
     \begin{solution}
-      % Enter your solution here.
+      We prove that the set on each side of the equality is a subset of the other. That is, two statements needs to be proved. We provide a direct proof of each. That is, we show that an element of one is also present in the other.
+
+      \begin{proof}$(A \times (B \interx C))\subseteq ((A \times B) \interx (A \times C))$\\
+        Consider $(a,d)\in A\times (B\interx C)$.\\
+        $\implies$ $d\in B$ and $d\in C$.\hfill(definitions of intersection, set product)\\
+        Because $d\in B$, $(a,d)$ is present in $A\times B$.\hfill(definition of set product)\\
+        And because $d\in C$, $(a,d)$ is present in $A\times C$.\hfill(as above)\\
+        $\implies$ $(a,d)\in (A\times B) \interx (A\times C)$\hfill(definition of intersection)
+      \end{proof}
+
+      \begin{proof}$ ((A \times B) \interx (A \times C)) \subseteq (A \times (B \interx C))$\\
+        Consider $(a,d)\in (A \times B) \interx (A \times C)$.\\
+        $\implies$ $(a,d)\in A\times B$ and $(a,d)\in A\times C$.\hfill(definition of intersection)\\
+        Because $(a,d)\in A\times B$ then $d\in B$.\hfill(definition of set product)\\
+        And because $(a,d)\in A\times C$ then $d\in C$.\hfill(as above)\\
+        $\implies$ $d\in B$ and $d\in C$.\hfill(conjunction)\\
+        $\implies$ $d\in (B\interx C)$.\hfill(definition of intersection)\\
+        $\implies$ $(a,d)\in A\times (B\interx C)$.\hfill(definition of set product)
+      \end{proof}
     \end{solution}
   \end{parts}
   
