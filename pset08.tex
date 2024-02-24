@@ -1,6 +1,5 @@
 \documentclass[a4paper]{exam}
 
-
 \usepackage{amsfonts,amsmath,amsthm}
 \usepackage[a4paper]{geometry}
 \usepackage{hyperref}
@@ -11,6 +10,11 @@
 
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
+
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkScale{3}
+\printanswers
 
 \title{Problem Set 08: Sets And Functions}
 \author{CS/MATH 113 Discrete Mathematics}
@@ -28,14 +32,39 @@
   Prove: $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ if and only if $A \subseteq B$.
 
   \begin{solution}
-    % Enter your solution here.
-  \end{solution}
+    The statement to prove is a biconditional. Proving it requires to prove two conditionals.
 
+    First, we show that $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ if $A \subseteq B$. We prove directly that an element of $\mathcal{P}(A)$ is an element of $\mathcal{P}(B)$ if $A$ is a subset of $B$.
+    
+    \begin{proof}$A \subseteq B \implies \mathcal{P}(A) \subseteq \mathcal{P}(B)$.\\
+      Consider $A \subseteq B$.\hfill (premise)\\
+      Consider an element, $C$, in $\mathcal{P}(A)$. That is, $C \in \mathcal{P}(A)$.\hfill(standard notation)\\
+      $\implies$ $C\subseteq A$.\hfill(definition of powerset)\\
+      $\implies$ every element of $C$ is a member of $A$.\hfill(definition of subset)\\
+      $\implies$ every element of $C$ is a member of $B$.\hfill($A\subseteq B$, definition of subset)\\
+      $\implies$ $C\subseteq B$.\hfill(definition of subset)\\
+      $\implies$ $C\in \mathcal{P}(B)$.\hfill(definition of powerset)
+    \end{proof}
+
+    Next, we prove the remaining conditional, $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ only if $A \subseteq B$. We show directly that, given the premise, $A$ must be a subset of $B$.
+    
+    \begin{proof}$\mathcal{P}(A) \subseteq \mathcal{P}(B)\implies A \subseteq B$.\\
+      $A \in \mathcal{P}(A)$.\hfill (definition of powerset)\\
+      $\implies$ $A \in \mathcal{P}(B)$.\hfill ($\mathcal{P}(A) \subseteq \mathcal{P}(B)$, definition of subset)\\
+      $\implies$ $A \subseteq B$.\hfill (definition of powerset)
+    \end{proof}
+  \end{solution}
 
 \question Show that if \(A \subseteq C\) and \(B \subseteq D\), then \(A \times B \subseteq C \times D\).
 
   \begin{solution}
-    % Enter your solution here.
+    We attempt a direct proof. We show that under the given premise, an element of \(A \times B\) is also present in $C \times D$.
+    \begin{proof}\(((A \subseteq C)\land (B \subseteq D))\implies (A \times B \subseteq C \times D)\)\\
+      We assume that $A$ is a subset of $C$ and that $B$ is a subset of $D$.\hfill(premise)\\
+      Consider an element $(a,b)$ of $A\times B$. Then $a\in A$ and $b\in B$.\hfill(definition of set product)\\
+      $\implies$ $a$ is an element of $C$, and $b$ is an element of $D$.\hfill(premise, definition of subset)\\
+      $\implies$ $(a,b)$ is an element of $C\times D$.\hfill(definition of set product)
+    \end{proof}
   \end{solution}
   
 \question Prove or disprove the following statements for all sets $A, B,$ and $C$:
