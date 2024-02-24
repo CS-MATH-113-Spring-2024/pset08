@@ -221,10 +221,19 @@
 
 \question A function \(f: I \rightarrow \R\) is strictly increasing on an interval \(I\) if for all \(x_1, x_2 \in I\) with \(x_1 < x_2\), it holds that \(f(x_1) < f(x_2)\). Here $I$ represents the interval on which the function is strictly increasing.
   
-  Given this definition, prove that a strictly increasing function is always injective.
+  Given this definition, prove that a strictly increasing function is always injective over the interval, $I$.
 
   \begin{solution}
-    % Enter your solution here.
+    We provide a proof by contraposition. That is, we show that distinct elements from $I$ yield distinct images under $f$.
+
+    \begin{proof}If $f$ is strictly increasing over $I$, then $f$ is injective over $I$.\\
+      Consider elements $x$ and $y$ from the domain $I$, of $f$, such that $x\neq y$.\\
+      Then $x<y$ or $x>y$.\\
+      If $x<y$, then $f(x)<f(y)$.\hfill(definition of strictly increasing function)\\
+      That is, $f(x)\neq f(y)$.\\
+      Otherwise, if $x>y$, then $f(x)>f(y)$.\hfill(definition of strictly increasing function)\\
+      That is, again, $f(x)\neq f(y)$.
+    \end{proof}
   \end{solution}
 \end{questions}
 \end{document}
