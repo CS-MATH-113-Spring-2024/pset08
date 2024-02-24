@@ -147,15 +147,27 @@
   \begin{parts}
   \part Prove that the function $f: \Z\to\Z$, defined as \(f(n) = n^2\) is neither injective nor surjective.
     \begin{solution}
-      % Enter your solution here.
+      We prove each using a counterexample.
+
+      \begin{proof}$f:\Z\to\Z,f(n) = n^2$ is not injective.\\
+        Consider, $-1$ and $1$, two distinct elements from the domain, \Z.\\
+        $f(-1) = f(1) = 1$
+      \end{proof}
+
+      \begin{proof}$f:\Z\to\Z,f(n) = n^2$ is not surjective.\\
+        Consider the element, $5$, from the co-domain. \Z.\\
+        There is no element, $x$,in the domain, \Z, such that $f(x) = 5$.
+      \end{proof}
     \end{solution}
 
   \part Can you make this function injective without doing any changes to the original function? (Hint: try redefining its domain and/or co-domain.)
     \begin{solution}
-      % Enter your solution here.
+      Adjusting the domain makes $f$ injective. The resulting function is:
+      \[
+        f:\Z^{+}\to\Z,f(n) = n^2
+      \]
     \end{solution}
   \end{parts}
-
   
 \question Prove that the inverse of the function $f: \Z\to\Z$ defined as \(f(n) = n+1\), is also a function.
 
