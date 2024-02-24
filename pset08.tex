@@ -121,7 +121,7 @@
   \begin{solution}
     We prove directly that, given the premises, an element of $A$ is an element of $C$.
 
-    \begin{proof}
+    \begin{proof}$(A \subseteq B) \land (B \subseteq C)\implies (A \subseteq C)$\\
       Consider $a\in A$.\\
       $\implies$ $a\in B$.\hfill(premise, definition of subset)\\
       $\implies$ $a\in C$.\hfill(premise, definition of subset)
@@ -131,7 +131,16 @@
 \question Show that if $A$ and $B$ are finite sets, then  \( A \union B \) is a finite set.
 
   \begin{solution}
-    % Enter your solution here.
+    We provide a direct proof.
+
+    \begin{proof}
+      $A$ and $B$ have finite cardinality, say $m$ and $n$ respectively.\hfill(premise)\\
+      $A$ and $B$ may be disjoint or may have common elements.\hfill({\color{red}HELP!})\\
+      If they are disjoint, then $|A\union B|=m+n$.\hfill(definition of union)\\
+      $\implies$ $A\union B$ is finite.\hfill(definition of finite set)\\
+      Otherwise, if they have common elements, $|A\union B|<m+n$.\hfill({\color{red}HELP!} inclusion-exclusion not covered)\\
+      $\implies$ $A\union B$ is finite.\hfill(definition of finite set)
+    \end{proof}
   \end{solution}
   
 \question
