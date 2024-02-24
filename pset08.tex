@@ -169,10 +169,21 @@
     \end{solution}
   \end{parts}
   
-\question Prove that the inverse of the function $f: \Z\to\Z$ defined as \(f(n) = n+1\), is also a function.
+\question \question Prove that the function $f: \Z\to\Z$ defined as \(f(n) = n+1\), is invertible.
 
   \begin{solution}
-    % Enter your solution here.
+    We have to show that $f$ is injective and surjective. We show each directly.
+
+    \begin{proof}$f: \Z\to\Z, f(n) = n+1$ is injective\\
+      Consider elements $x$ and $y$ from the domain, \Z, such that $f(x)=f(y)$.\\
+      Then, $x+1=y+1$ and $x=y$.
+    \end{proof}
+
+    \begin{proof}$f: \Z\to\Z, f(n) = n+1$ is surjective\\
+      Consider an element $y$ from the co-domain, \Z.\\
+      Then, there is an element, $x$, from the domain, \Z, such that $f(x)=y$.\\
+      Namely, $x=y-1$.
+    \end{proof}
   \end{solution}
   
 \question Give an explicit formula for a function from \Z to $\Z^+$ that is:
