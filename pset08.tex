@@ -10,6 +10,8 @@
 
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\union{\cup}
+\newcommand\interx{\cap}
 
 \usepackage{draftwatermark}
 \SetWatermarkText{Sample Solution}
@@ -69,12 +71,21 @@
   
 \question Prove or disprove the following statements for all sets $A, B,$ and $C$:
   \begin{parts}
-  \part $ A \times (B \cup C) = (A \times B) \cup (A \times C) $
+  \part $ A \times (B \union C) = (A \times B) \union (A \times C) $
     \begin{solution}
-      % Enter your solution here.
+      We prove that the set on each side of the equality is a subset of the other. That is, two statements needs to be proved. We provide a direct proof of each. That is, we show that an element of one is also present in the other.
+
+      \begin{proof}$ A \times (B \union C) \subseteq (A \times B) \union (A \times C) $\\
+        Consider $(a,d)\in A\times (B\union C)$.\\
+        $\implies$ $a\in A$ and $d\in B$ or $d\in C$.\hfill(definitions of set product and union)\\
+        If $d\in B$, then $(a,d)\in A\times B$.\hfill(definition of set product)\\
+        $\implies$ $(a,d)\in (A\times B)\union(A\times C)$.\hfill(definition of union)\\
+        Otherwise, if $d\in C$, then $(a,d)\in A\times C$.\hfill(definition of set product)\\
+        $\implies$ $(a,d)\in (A\times B)\union(A\times C)$.\hfill(definition of union)
+      \end{proof}
     \end{solution}
 
-  \part $A \times (B \cap C) = (A \times B) \cap (A \times C) $
+  \part $A \times (B \interx C) = (A \times B) \interx (A \times C) $
     \begin{solution}
       % Enter your solution here.
     \end{solution}
@@ -86,7 +97,7 @@
     % Enter your solution here.
   \end{solution}
 
-\question Show that if $A$ and $B$ are finite sets, then  \( A \cup B \) is a finite set.
+\question Show that if $A$ and $B$ are finite sets, then  \( A \union B \) is a finite set.
 
   \begin{solution}
     % Enter your solution here.
