@@ -1,6 +1,5 @@
 \documentclass[a4paper]{exam}
 
-
 \usepackage{amsfonts,amsmath,amsthm}
 \usepackage[a4paper]{geometry}
 \usepackage{hyperref}
@@ -11,6 +10,13 @@
 
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\union{\cup}
+\newcommand\interx{\cap}
+
+\usepackage{draftwatermark}
+\SetWatermarkText{Sample Solution}
+\SetWatermarkScale{3}
+\printanswers
 
 \title{Problem Set 08: Sets And Functions}
 \author{CS/MATH 113 Discrete Mathematics}
@@ -28,90 +34,204 @@
   Prove: $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ if and only if $A \subseteq B$.
 
   \begin{solution}
-    % Enter your solution here.
-  \end{solution}
+    The statement to prove is a biconditional. Proving it requires to prove two conditionals.
 
+    First, we show that $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ if $A \subseteq B$. We prove directly that an element of $\mathcal{P}(A)$ is an element of $\mathcal{P}(B)$ if $A$ is a subset of $B$.
+    
+    \begin{proof}$A \subseteq B \implies \mathcal{P}(A) \subseteq \mathcal{P}(B)$.\\
+      Consider $A \subseteq B$.\hfill (premise)\\
+      Consider an element, $C$, in $\mathcal{P}(A)$. That is, $C \in \mathcal{P}(A)$.\hfill(standard notation)\\
+      $\implies$ $C\subseteq A$.\hfill(definition of powerset)\\
+      $\implies$ every element of $C$ is a member of $A$.\hfill(definition of subset)\\
+      $\implies$ every element of $C$ is a member of $B$.\hfill($A\subseteq B$, definition of subset)\\
+      $\implies$ $C\subseteq B$.\hfill(definition of subset)\\
+      $\implies$ $C\in \mathcal{P}(B)$.\hfill(definition of powerset)
+    \end{proof}
+
+    Next, we prove the remaining conditional, $\mathcal{P}(A) \subseteq \mathcal{P}(B)$ only if $A \subseteq B$. We show directly that, given the premise, $A$ must be a subset of $B$.
+    
+    \begin{proof}$\mathcal{P}(A) \subseteq \mathcal{P}(B)\implies A \subseteq B$.\\
+      $A \in \mathcal{P}(A)$.\hfill (definition of powerset)\\
+      $\implies$ $A \in \mathcal{P}(B)$.\hfill ($\mathcal{P}(A) \subseteq \mathcal{P}(B)$, definition of subset)\\
+      $\implies$ $A \subseteq B$.\hfill (definition of powerset)
+    \end{proof}
+  \end{solution}
 
 \question Show that if \(A \subseteq C\) and \(B \subseteq D\), then \(A \times B \subseteq C \times D\).
 
   \begin{solution}
-    % Enter your solution here.
+    We attempt a direct proof. We show that under the given premise, an element of \(A \times B\) is also present in $C \times D$.
+    \begin{proof}\(((A \subseteq C)\land (B \subseteq D))\implies (A \times B \subseteq C \times D)\)\\
+      We assume that $A$ is a subset of $C$ and that $B$ is a subset of $D$.\hfill(premise)\\
+      Consider an element $(a,b)$ of $A\times B$. Then $a\in A$ and $b\in B$.\hfill(definition of set product)\\
+      $\implies$ $a$ is an element of $C$, and $b$ is an element of $D$.\hfill(premise, definition of subset)\\
+      $\implies$ $(a,b)$ is an element of $C\times D$.\hfill(definition of set product)
+    \end{proof}
   \end{solution}
   
 \question Prove or disprove the following statements for all sets $A, B,$ and $C$:
   \begin{parts}
-  \part $ A \times (B \cup C) = (A \times B) \cup (A \times C) $
+  \part $ A \times (B \union C) = (A \times B) \union (A \times C) $
     \begin{solution}
-      % Enter your solution here.
+      We prove that the set on each side of the equality is a subset of the other. That is, two statements needs to be proved. We provide a direct proof of each. That is, we show that an element of one is also present in the other.
+
+      \begin{proof}$ A \times (B \union C) \subseteq (A \times B) \union (A \times C) $\\
+        Consider $(a,d)\in A\times (B\union C)$.\\
+        $\implies$ $a\in A$ and $d\in B$ or $d\in C$.\hfill(definitions of set product and union)\\
+        If $d\in B$, then $(a,d)\in A\times B$.\hfill(definition of set product)\\
+        $\implies$ $(a,d)\in (A\times B)\union(A\times C)$.\hfill(definition of union)\\
+        Otherwise, if $d\in C$, then $(a,d)\in A\times C$.\hfill(definition of set product)\\
+        $\implies$ $(a,d)\in (A\times B)\union(A\times C)$.\hfill(definition of union)
+      \end{proof}
+
+      \begin{proof}$ (A \times B) \union (A \times C)\subseteq A \times (B \union C) $\\
+        Consider $(a,d)\in (A \times B) \union (A \times C)$.\\
+        $\implies$ $(a,d)\in A\times B$ or $(a,d)\in A\times C$.\hfill(definition of union)\\
+        If $(a,d)\in A\times B$ then $(a,d)\in A\times (B\union C)$.\hfill(definitions of union, product)\\
+        Otherwise, if $(a,d)\in A\times C$ then $(a,d)\in A\times (B\union C)$.\hfill(as above)
+      \end{proof}
     \end{solution}
 
-  \part $A \times (B \cap C) = (A \times B) \cap (A \times C) $
+  \part $A \times (B \interx C) = (A \times B) \interx (A \times C) $
     \begin{solution}
-      % Enter your solution here.
+      We prove that the set on each side of the equality is a subset of the other. That is, two statements needs to be proved. We provide a direct proof of each. That is, we show that an element of one is also present in the other.
+
+      \begin{proof}$(A \times (B \interx C))\subseteq ((A \times B) \interx (A \times C))$\\
+        Consider $(a,d)\in A\times (B\interx C)$.\\
+        $\implies$ $d\in B$ and $d\in C$.\hfill(definitions of intersection, set product)\\
+        Because $d\in B$, $(a,d)$ is present in $A\times B$.\hfill(definition of set product)\\
+        And because $d\in C$, $(a,d)$ is present in $A\times C$.\hfill(as above)\\
+        $\implies$ $(a,d)\in (A\times B) \interx (A\times C)$\hfill(definition of intersection)
+      \end{proof}
+
+      \begin{proof}$ ((A \times B) \interx (A \times C)) \subseteq (A \times (B \interx C))$\\
+        Consider $(a,d)\in (A \times B) \interx (A \times C)$.\\
+        $\implies$ $(a,d)\in A\times B$ and $(a,d)\in A\times C$.\hfill(definition of intersection)\\
+        Because $(a,d)\in A\times B$ then $d\in B$.\hfill(definition of set product)\\
+        And because $(a,d)\in A\times C$ then $d\in C$.\hfill(as above)\\
+        $\implies$ $d\in B$ and $d\in C$.\hfill(conjunction)\\
+        $\implies$ $d\in (B\interx C)$.\hfill(definition of intersection)\\
+        $\implies$ $(a,d)\in A\times (B\interx C)$.\hfill(definition of set product)
+      \end{proof}
     \end{solution}
   \end{parts}
   
 \question If $A, B,$ and $C$ are sets such that $A \subseteq B$ and $B \subseteq C$, show that $A \subseteq C$.
 
   \begin{solution}
-    % Enter your solution here.
+    We prove directly that, given the premises, an element of $A$ is an element of $C$.
+
+    \begin{proof}$(A \subseteq B) \land (B \subseteq C)\implies (A \subseteq C)$\\
+      Consider $a\in A$.\\
+      $\implies$ $a\in B$.\hfill(premise, definition of subset)\\
+      $\implies$ $a\in C$.\hfill(premise, definition of subset)
+    \end{proof}
   \end{solution}
 
-\question Show that if $A$ and $B$ are finite sets, then  \( A \cup B \) is a finite set.
+\question Show that if $A$ and $B$ are finite sets, then  \( A \union B \) is a finite set.
 
   \begin{solution}
-    % Enter your solution here.
+    We provide a direct proof.
+
+    \begin{proof}
+      $A$ and $B$ have finite cardinality.\hfill(premise)\\
+      Let $|A|=m$ and $|B|=n$, where $m,n\in\Z$.\hfill(definition of cardinality)\\
+      $\implies$ $0\le |A\union B|\le (m+n)$.\hfill(definition of union)\\
+      $\implies$ $A\union B$ is finite.\hfill(definition of finite set)
+    \end{proof}
   \end{solution}
   
 \question
   \begin{parts}
   \part Prove that the function $f: \Z\to\Z$, defined as \(f(n) = n^2\) is neither injective nor surjective.
     \begin{solution}
-      % Enter your solution here.
+      We prove each using a counterexample.
+
+      \begin{proof}$f:\Z\to\Z,f(n) = n^2$ is not injective.\\
+        Consider, $-1$ and $1$, two distinct elements from the domain, \Z.\\
+        $f(-1) = f(1) = 1$
+      \end{proof}
+
+      \begin{proof}$f:\Z\to\Z,f(n) = n^2$ is not surjective.\\
+        Consider the element, $5$, from the co-domain. \Z.\\
+        There is no element, $x$,in the domain, \Z, such that $f(x) = 5$.
+      \end{proof}
     \end{solution}
 
   \part Can you make this function injective without doing any changes to the original function? (Hint: try redefining its domain and/or co-domain.)
     \begin{solution}
-      % Enter your solution here.
+      Adjusting the domain makes $f$ injective. The resulting function is:
+      \[
+        f:\Z^{+}\to\Z,f(n) = n^2
+      \]
     \end{solution}
   \end{parts}
-
   
 \question Prove that the function $f: \Z\to\Z$ defined as \(f(n) = n+1\), is invertible.
 
   \begin{solution}
-    % Enter your solution here.
+    We have to show that $f$ is injective and surjective. We show each directly.
+
+    \begin{proof}$f: \Z\to\Z, f(n) = n+1$ is injective\\
+      Consider elements $x$ and $y$ from the domain, \Z, such that $f(x)=f(y)$.\\
+      Then, $x+1=y+1$ and $x=y$.
+    \end{proof}
+
+    \begin{proof}$f: \Z\to\Z, f(n) = n+1$ is surjective\\
+      Consider an element $y$ from the co-domain, \Z.\\
+      Then, there is an element, $x$, from the domain, \Z, such that $f(x)=y$.\\
+      Namely, $x=y-1$.
+    \end{proof}
   \end{solution}
   
 \question Give an explicit formula for a function from \Z to $\Z^+$ that is:
   \begin{parts}
   \part one-to-one, but not onto,
     \begin{solution}
-      % Enter your solution here.
+      $f(x) =
+      \begin{cases}
+        3x  & x > 0\\
+        3|x|+1  & x \le 0\\
+      \end{cases}
+      $
     \end{solution}
 
   \part onto, but not one-to-one,
     \begin{solution}
-      % Enter your solution here.
+      $f(x) = |x|+1$
     \end{solution}
 
   \part one-to-one and onto, and
     \begin{solution}
-      % Enter your solution here.
+      $f(x) =
+      \begin{cases}
+        2x  & x > 0\\
+        2|x|+1  & x \le 0\\
+      \end{cases}
+      $
     \end{solution}
 
   \part neither one-to-one nor onto.
     \begin{solution}
-      % Enter your solution here.
+      $f(x) = 1$
     \end{solution}
   \end{parts}
 
 \question A function \(f: I \rightarrow \R\) is strictly increasing on an interval \(I\) if for all \(x_1, x_2 \in I\) with \(x_1 < x_2\), it holds that \(f(x_1) < f(x_2)\). Here $I$ represents the interval on which the function is strictly increasing.
   
-  Given this definition, prove that a strictly increasing function is always injective over the interval, I.
+  Given this definition, prove that a strictly increasing function is always injective over the interval, $I$.
 
   \begin{solution}
-    % Enter your solution here.
+    We provide a proof by contraposition. That is, we show that distinct elements from $I$ yield distinct images under $f$.
+
+    \begin{proof}If $f$ is strictly increasing over $I$, then $f$ is injective over $I$.\\
+      Consider elements $x$ and $y$ from the domain $I$, of $f$, such that $x\neq y$.\\
+      Then $x<y$ or $x>y$.\\
+      If $x<y$, then $f(x)<f(y)$.\hfill(definition of strictly increasing function)\\
+      That is, $f(x)\neq f(y)$.\\
+      Otherwise, if $x>y$, then $f(x)>f(y)$.\hfill(definition of strictly increasing function)\\
+      That is, again, $f(x)\neq f(y)$.
+    \end{proof}
   \end{solution}
 \end{questions}
 \end{document}
